@@ -1,7 +1,6 @@
 /* eslint-disable func-names */
 /* eslint-disable object-shorthand */
 function createIteratable(n) {
-  const step = 1
   let value = 0
   let current
   const fibArray = []
@@ -20,7 +19,7 @@ function createIteratable(n) {
               current = fibArray[value]
             }
             result = { value: current, done: false }
-            value += step
+            value += 1
             return result
           }
           return { value, done: true }

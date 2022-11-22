@@ -1,5 +1,4 @@
 function createGenerator(n) {
-  const step = 1
   let value = 0
   let current
   const returnArray = []
@@ -14,7 +13,7 @@ function createGenerator(n) {
         current = returnArray[value]
       }
       yield current
-      value += step
+      value += 1
     }
 
     return current

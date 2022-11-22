@@ -1,7 +1,8 @@
 /* eslint-disable func-names */
 /* eslint-disable object-shorthand */
-function createIteratable(start = 0, end = 10, step = 1) {
-  let value = start
+function createIteratable(n) {
+  const step = 1
+  let value = 0
   let current
   const fibArray = []
 
@@ -10,7 +11,7 @@ function createIteratable(start = 0, end = 10, step = 1) {
       return {
         next() {
           let result
-          if (value < end) {
+          if (value < n) {
             if (value <= 1) {
               fibArray[value] = value
               current = fibArray[value]
@@ -29,13 +30,13 @@ function createIteratable(start = 0, end = 10, step = 1) {
   }
 }
 
-const iterable1 = createIteratable(0, 5, 1)
+const iterable1 = createIteratable(5)
 
 // eslint-disable-next-line no-restricted-syntax
 for (const number of iterable1) {
   console.log(number)
 }
 
-const iterable2 = createIteratable(0, 5, 1)
+const iterable2 = createIteratable(5)
 
 console.log([...iterable2])

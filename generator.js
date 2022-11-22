@@ -1,30 +1,30 @@
 function createGenerator(n) {
-  let value = 0
+  let index = 0
   const returnArray = []
 
   return function* generatorFunction() {
-    while (value < n) {
-      if (value <= 1) {
-        returnArray[value] = value
+    while (index < n) {
+      if (index <= 1) {
+        returnArray[index] = index
       } else {
-        returnArray[value] = returnArray[value - 1] + returnArray[value - 2]
+        returnArray[index] = returnArray[index - 1] + returnArray[index - 2]
       }
-      yield returnArray[value]
-      value += 1
+      yield returnArray[index]
+      index += 1
     }
 
-    return returnArray[value]
+    return returnArray[index]
   }
 }
 
-const generatorFunction1 = createGenerator(10)
+const generatorFunction1 = createGenerator(5)
 const generatorObject1 = generatorFunction1()
 
 for (let i = 0; i < 10; i += 1) {
   console.log(generatorObject1.next())
 }
 
-const generatorFunction2 = createGenerator(10)
+const generatorFunction2 = createGenerator(5)
 const generatorObject2 = generatorFunction2()
 
 console.log([...generatorObject2])

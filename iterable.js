@@ -2,7 +2,9 @@
 /* eslint-disable object-shorthand */
 function createIteratable(n) {
   let index = 0
-  const fibArray = []
+  let num1 = 0
+  let num2 = 1
+  let nextNum = 0
 
   return {
     [Symbol.iterator]: function () {
@@ -10,29 +12,20 @@ function createIteratable(n) {
         next() {
           let result
           if (index < n) {
-            if (index <= 1) {
-              fibArray[index] = index
-            } else {
-              fibArray[index] = fibArray[index - 1] + fibArray[index - 2]
-            }
-            result = { value: fibArray[index], done: false }
+            result = { value: nextNum, done: false }
+            nextNum = num2 + num1
+            num2 = num1
+            num1 = nextNum
             index += 1
             return result
           }
-          return { value: index, done: true }
+          return { done: true }
         },
       }
     },
   }
 }
 
-const iterable1 = createIteratable(4)
+const iterable = createIteratable(4)
 
-// eslint-disable-next-line no-restricted-syntax
-for (const number of iterable1) {
-  console.log(number)
-}
-
-const iterable2 = createIteratable(4)
-
-console.log([...iterable2])
+console.log([...iterable])

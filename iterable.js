@@ -2,7 +2,6 @@
 /* eslint-disable object-shorthand */
 function createIteratable(n) {
   let value = 0
-  let current
   const fibArray = []
 
   return {
@@ -13,12 +12,10 @@ function createIteratable(n) {
           if (value < n) {
             if (value <= 1) {
               fibArray[value] = value
-              current = fibArray[value]
             } else {
               fibArray[value] = fibArray[value - 1] + fibArray[value - 2]
-              current = fibArray[value]
             }
-            result = { value: current, done: false }
+            result = { value: fibArray[value], done: false }
             value += 1
             return result
           }

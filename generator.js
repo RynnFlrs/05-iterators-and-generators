@@ -1,22 +1,19 @@
 function createGenerator(n) {
   let value = 0
-  let current
   const returnArray = []
 
   return function* generatorFunction() {
     while (value < n) {
       if (value <= 1) {
         returnArray[value] = value
-        current = returnArray[value]
       } else {
         returnArray[value] = returnArray[value - 1] + returnArray[value - 2]
-        current = returnArray[value]
       }
-      yield current
+      yield returnArray[value]
       value += 1
     }
 
-    return current
+    return returnArray[value]
   }
 }
 
